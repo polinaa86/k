@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>С Днём Рождения! 💗</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .card {
+            background: rgba(255,255,255,0.9);
+            padding: 35px 22px;
+            margin: 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px #ff69b477;
+            z-index: 2;
+            max-width: 400px;
+        }
+        h1 { color: #ff4081; font-size: 30px; }
+        p { color: #a23d68; font-size: 19px; line-height: 1.6; }
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .heart {
+            position: fixed;
+            bottom: -40px;
+            font-size: 28px;
+            animation: float 5s linear forwards;
+            pointer-events: none;
+        }
+        @keyframes float {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        #surprise { display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎂 С Днём Рождения! 💖</h1>
+        <p>
+            Моя любимая Крис кис кис кис! 💕<br><br>
+            Желаю тебе море счастья, улыбок,
+            любви и исполнения всех мечтаний! ✨
+            <br><br>
+            Спасибо, что ты есть в моей жизни! 🥹💗
+        </p>
+
+        <button onclick="surprise()">🎁 Нажми на сюрприз</button>
+
+        <div id="surprise">
+            <h2>🎉 СЮРПРИЗ! 🎉</h2>
+            <p>Для самой лучшей подруги 💗</p>
+            <div class="certificate">
+                <h1>ozon</h1>
+                <h2>🎁 Подарочный сертификат</h2>
+                <h1>1500 ₽</h1>
+                <p>На твои любимые покупки 💕</p>
+                <p>p.s. напишите в личку вашу почту 💕</p>
+            </div>
+            <p>С днём рождения, красотка! 💖</p>
+        </div>
+    </div>
+
+    <script>
+        function surprise() {
+            document.getElementById("surprise").style.display = "block";
+            for (let i = 0; i < 35; i++) {
+                setTimeout(createHeart, i * 90);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💗";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6500);
+        }
+
+        setInterval(createHeart, 650);
+    </script>
+</body>
+</html>
